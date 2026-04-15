@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HabitzPro — Get Started</title>
+  <link rel="stylesheet" href="../css/auth.css"/>
+  <style>
+    /* Extra styles for the auth landing card */
+    .auth-choice { text-align: center; }
+
+    .card-heading h1 { font-size: 26px; }
+
+    .choice-btns {
+      display: flex; flex-direction: column; gap: 13px;
+      margin: 28px 0 20px;
+      animation: fade-up 0.5s 0.38s both;
+    }
+
+    .choice-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 15px 24px;
+      border-radius: 14px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px; font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .choice-btn::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0.15);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .choice-btn:hover::after { opacity: 1; }
+    .choice-btn:hover { transform: translateY(-3px) scale(1.02); }
+    .choice-btn:active { transform: translateY(0) scale(1); }
+
+    .choice-btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 8px 28px var(--glow);
+    }
+    .choice-btn.primary:hover { box-shadow: 0 14px 40px var(--glow); }
+
+    .choice-btn.secondary {
+      background: var(--input-bg);
+      border: 1.5px solid var(--input-border);
+      color: var(--text);
+    }
+    .choice-btn.secondary:hover {
+      border-color: var(--primary);
+      box-shadow: 0 6px 20px var(--glow);
+    }
+
+    .choice-divider {
+      font-size: 12px; color: var(--text-muted);
+      letter-spacing: 0.04em;
+      animation: fade-up 0.5s 0.50s both;
+    }
+
+    /* Features mini-list */
+    .features {
+      display: flex; flex-direction: column; gap: 10px;
+      margin: 26px 0;
+      text-align: left;
+      animation: fade-up 0.5s 0.32s both;
+    }
+    .feature-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      background: var(--input-bg);
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      font-size: 13.5px; font-weight: 400;
+      color: var(--text-muted);
+      transition: background 0.45s;
+    }
+    .feature-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+    }
+    .feature-item b { color: var(--text); font-weight: 600; display: block; font-size: 13px; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      position: fixed; top: 22px; left: 22px; z-index: 300;
+      font-size: 13px; font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 7px 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 100px;
+      box-shadow: 0 3px 14px var(--shadow);
+      transition: all 0.25s;
+    }
+    .back-link:hover { color: var(--primary); border-color: var(--primary); transform: translateY(-1px); }
+  </style>
+  <script src="api.js"></script>
+</head>
+<body>
+
+  <a href="Main_file.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back
+  </a>
+
+  <button class="theme-toggle" id="themeToggle">
+    <span class="toggle-icon" id="toggleIcon">☀️</span>
+    <span id="toggleLabel">Light</span>
+  </button>
+
+  <div class="page">
+    <div class="auth-card auth-choice">
+
+      <!-- Brand -->
+      <div class="brand-mark" style="justify-content:center;">
+        <a href="Main_file.html">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10l4 4 8-8" stroke="#fff" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="brand-name">Habitz<span>pro</span></span>
+        </a>
+      </div>
+
+      <!-- Heading -->
+      <div class="card-heading">
+        <h1>Start your journey</h1>
+      </div>
+      <p class="card-sub">Build powerful habits in minutes. It's free.</p>
+
+      <!-- Feature highlights -->
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div><b>Track daily habits</b> Set goals and never miss a day</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔥</div>
+          <div><b>Streak system</b> Stay motivated with visual streaks</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📊</div>
+          <div><b>Progress insights</b> See your growth over time</div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="choice-btns">
+        <a href="signup.html" class="choice-btn primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M2 14c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M12 2v4M10 4h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Create free account
+        </a>
+        <a href="login.html" class="choice-btn secondary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 3H3a1 1 0 00-1 1v8a1 1 0 001 1h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M10 11l3-3-3-3M13 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Sign in to your account
+        </a>
+      </div>
+
+      <p class="choice-divider">No credit card required · Always free</p>
+
+    </div>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const icon = document.getElementById('toggleIcon');
+    const lbl = document.getElementById('toggleLabel');
+    let dark = localStorage.getItem('hpTheme') === 'dark';
+    applyTheme();
+    btn.addEventListener('click', () => {
+      dark = !dark;
+      localStorage.setItem('hpTheme', dark ? 'dark' : 'light');
+      applyTheme();
+    });
+    function applyTheme() {
+      root.setAttribute('data-theme', dark ? 'dark' : 'light');
+      icon.textContent = dark ? '🌙' : '☀️';
+      lbl.textContent  = dark ? 'Dark' : 'Light';
+    }
+  </script>
+</body>
+</html>
